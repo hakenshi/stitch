@@ -28,4 +28,30 @@ pub enum Commands {
         #[arg(long = "with-styles", short = 's')]
         with_styles: bool,
     },
+    #[command(name = "make:route")]
+    MakeRoute {
+        name: String,
+        #[arg(long = "layout", short = 'l')]
+        layout: bool,
+        #[arg(
+            long = "async",
+            conflicts_with = "api",
+        )]
+        is_async: bool,
+
+        #[arg(long = "api", short = 'a', conflicts_with_all=["layout", "is_async"])]
+        api: bool,
+
+        #[arg(long = "get", requires = "api")]
+        get: bool,
+
+        #[arg(long = "post", requires = "api")]
+        post: bool,
+
+        #[arg(long = "put", requires = "api")]
+        put: bool,
+
+        #[arg(long = "delete", requires = "api")]
+        delete: bool,
+    },
 }
