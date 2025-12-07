@@ -1,0 +1,20 @@
+{# filepath: templates/component.tsx.tera #}
+{%- if with_styles %}
+import styles from './styles.module.css';
+{% endif -%}
+{%- if with_props %}
+interface {{ name }}Props{% if with_children %} extends PropsWithChildren{% endif %} {
+
+}
+
+{% endif -%}
+export function {{ name }}({% if with_props %}{}: {{ name }}Props{% endif %}) {
+    return (
+        <div>
+            Hi from {{name}}
+            {%- if with_children %}
+            {children}
+            {%- endif %}
+        </div>
+    )
+}
