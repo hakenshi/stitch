@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-
 {% if get %}
+
 export async function GET(request: NextRequest) {
   try {
     // TODO: Implement GET logic
@@ -12,13 +12,13 @@ export async function GET(request: NextRequest) {
     )
   }
 }
-{% endif %}
+{%- endif %}
+{%- if post %}
 
-{% if post %}
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    
+
     // TODO: Implement POST logic
     return NextResponse.json({ message: 'Created' }, { status: 201 })
   } catch (error) {
@@ -28,13 +28,13 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-{% endif %}
+{%- endif %}
+{%- if put %}
 
-{% if put %}
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json()
-    
+
     // TODO: Implement PUT logic
     return NextResponse.json({ message: 'Updated' })
   } catch (error) {
@@ -44,9 +44,9 @@ export async function PUT(request: NextRequest) {
     )
   }
 }
-{% endif %}
+{%- endif %}
+{%- if delete %}
 
-{% if delete %}
 export async function DELETE(request: NextRequest) {
   try {
     // TODO: Implement DELETE logic
@@ -58,13 +58,13 @@ export async function DELETE(request: NextRequest) {
     )
   }
 }
-{% endif %}
+{%- endif %}
+{%- if patch %}
 
-{% if patch %}
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json()
-    
+
     // TODO: Implement PATCH logic
     return NextResponse.json({ message: 'Patched' })
   } catch (error) {
@@ -74,4 +74,4 @@ export async function PATCH(request: NextRequest) {
     )
   }
 }
-{% endif %}
+{%- endif %}

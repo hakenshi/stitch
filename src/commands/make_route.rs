@@ -7,7 +7,6 @@ use crate::{
     utils::{renderer::TemplateOptions, to_pascal_case, TemplateRenderer},
 };
 
-
 pub struct MakeRouteOptions {
     pub name: String,
     pub api: bool,
@@ -19,12 +18,28 @@ pub struct MakeRouteOptions {
     pub delete: bool,
 }
 
+impl MakeRouteOptions {
+    fn route_name(&self) -> String {
+        let last_segment = self.name.split('/').last().unwrap_or(&self.name);
+
+        return to_pascal_case(last_segment);
+    }
+}
+
 impl TemplateOptions for MakeRouteOptions {
     fn build_context(&self) -> tera::Context {
         let mut context = Context::new();
-        let pascal_name = to_pascal_case(&self.name);
-        context.insert("name", &pascal_name);
+        context.insert("name", &self.route_name());
         context.insert("is_async", &self.is_async);
+
+        if self.api {
+            context.insert("api", &self.api);
+            context.insert("get", &self.get);
+            context.insert("post", &self.post);
+            context.insert("put", &self.put);
+            context.insert("delete", &self.delete);
+        }
+
         return context;
     }
     fn result_dir(&self) -> String {
