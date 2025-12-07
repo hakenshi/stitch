@@ -10,6 +10,12 @@ pub struct CLI {
 
 #[derive(Subcommand)]
 pub enum Commands {
+    /// Scaffolds a new react project
+    Init {
+        project_name: String,
+        #[arg(long = "docker", short = 'd')]
+        docker: bool,
+    },
     /// Cria um novo componente
     #[command(name = "make:component")]
     MakeComponent {
@@ -33,10 +39,7 @@ pub enum Commands {
         name: String,
         #[arg(long = "layout", short = 'l')]
         layout: bool,
-        #[arg(
-            long = "async",
-            conflicts_with = "api",
-        )]
+        #[arg(long = "async", conflicts_with = "api")]
         is_async: bool,
 
         #[arg(long = "api", short = 'a', conflicts_with_all=["layout", "is_async"])]

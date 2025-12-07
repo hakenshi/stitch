@@ -47,5 +47,7 @@ fn main() {
                 delete,
             });
         }
+        #[allow(unused_variables)]
+        Commands::Init { project_name, docker } => {}
     }
 }
