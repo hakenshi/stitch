@@ -1,0 +1,7 @@
+export function {{ name }}Layout({children}: PropsWithChildren) {
+    return (
+        <div>
+            {children}
+        </div>
+    )
+}
