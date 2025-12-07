@@ -1,10 +1,11 @@
 mod cli;
 mod commands;
+mod utils;
 
 use clap::Parser;
 use cli::{Commands, CLI};
 
-use crate::commands::{MakeComponentOptions, make_component};
+use crate::commands::{generator::CommandGenerator, make_component::MakeComponentOptions};
 
 fn main() {
     let cli = CLI::parse();
@@ -16,7 +17,7 @@ fn main() {
             with_props,
             with_styles,
         } => {
-            make_component(MakeComponentOptions {
+            MakeComponentOptions::execute(&MakeComponentOptions {
                 name,
                 with_children,
                 with_props,
