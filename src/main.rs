@@ -5,7 +5,9 @@ mod utils;
 use clap::Parser;
 use cli::{Commands, CLI};
 
-use crate::commands::{generator::CommandGenerator, make_component::MakeComponentOptions};
+use crate::commands::{
+    generator::CommandGenerator, make_component::MakeComponentOptions, make_route::MakeRouteOptions,
+};
 
 fn main() {
     let cli = CLI::parse();
@@ -22,6 +24,27 @@ fn main() {
                 with_children,
                 with_props,
                 with_styles,
+            });
+        }
+        Commands::MakeRoute {
+            name,
+            layout,
+            is_async,
+            api,
+            get,
+            post,
+            put,
+            delete,
+        } => {
+            MakeRouteOptions::execute(&MakeRouteOptions {
+                name,
+                api,
+                layout,
+                is_async,
+                get,
+                post,
+                put,
+                delete,
             });
         }
     }
