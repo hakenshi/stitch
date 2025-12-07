@@ -1,0 +1,77 @@
+import { NextRequest, NextResponse } from 'next/server'
+
+{% if get %}
+export async function GET(request: NextRequest) {
+  try {
+    // TODO: Implement GET logic
+    return NextResponse.json({ message: 'Success' })
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    )
+  }
+}
+{% endif %}
+
+{% if post %}
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    
+    // TODO: Implement POST logic
+    return NextResponse.json({ message: 'Created' }, { status: 201 })
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    )
+  }
+}
+{% endif %}
+
+{% if put %}
+export async function PUT(request: NextRequest) {
+  try {
+    const body = await request.json()
+    
+    // TODO: Implement PUT logic
+    return NextResponse.json({ message: 'Updated' })
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    )
+  }
+}
+{% endif %}
+
+{% if delete %}
+export async function DELETE(request: NextRequest) {
+  try {
+    // TODO: Implement DELETE logic
+    return NextResponse.json({ message: 'Deleted' })
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    )
+  }
+}
+{% endif %}
+
+{% if patch %}
+export async function PATCH(request: NextRequest) {
+  try {
+    const body = await request.json()
+    
+    // TODO: Implement PATCH logic
+    return NextResponse.json({ message: 'Patched' })
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    )
+  }
+}
+{% endif %}
