@@ -1,0 +1,6 @@
+export {% if is_async %}async {% endif -%} function {{ name }}Page() {
+    return (
+        <div>
+        </div>
+    )
+}
